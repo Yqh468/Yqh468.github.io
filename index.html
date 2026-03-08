@@ -1375,7 +1375,7 @@
 
         <!-- 烟花爆炸声（短音效） -->
         <audio id="fireworkSound" preload="auto">
-            <source src="audio/fireworksExplosionSoundEffect.mp3" type="audio/mpeg">
+            <source src="fireworksExplosionSoundEffect.mp3" type="audio/mpeg">
         </audio>
 
         <!-- 烟花特效容器 -->
@@ -1673,56 +1673,56 @@
         /**
          * ==================== 退出登录功能 ====================
          */
-        function logout() {
-            // 显示确认对话框
-            if (!confirm("确定要退出登录吗？")) {
-                return;
-            }
-
-            console.log("开始退出登录流程...");
-
-            // 1. 清除本地存储的token
-            localStorage.removeItem(TOKEN_KEY);
-
-            // 2. 可选：向后端发送退出请求
-            fetch(`${API_BASE}/logout`, {
-                method: "POST",
-                credentials: 'include'
-            })
-            .then(response => {
-                console.log("后端退出请求完成");
-                return response.json();
-            })
-            .catch(err => {
-                console.log("后端登出接口调用失败，不影响前端登出:", err);
-            })
-            .finally(() => {
-                // 3. 清理页面状态
-                clearPageState();
-
-                // 4. 隐藏退出按钮
-                hideLogoutButton();
-
-                // 5. 切换页面显示
-                document.getElementById("loginPage").classList.remove("hidden");
-                document.getElementById("mainContent").classList.add("main-content");
-
-                // 6. 清空表单
-                document.getElementById("username").value = "";
-                document.getElementById("password").value = "";
-                document.getElementById("captcha").value = "";
-
-                // 7. 刷新验证码
-                refreshCaptcha();
-
-                // 8. 显示退出成功消息
-                setTimeout(() => {
-                    alert("已成功退出登录");
-                }, 300);
-
-                console.log("退出登录完成");
-            });
-        }
+        // function logout() {
+        //     // 显示确认对话框
+        //     if (!confirm("确定要退出登录吗？")) {
+        //         return;
+        //     }
+        //
+        //     console.log("开始退出登录流程...");
+        //
+        //     // 1. 清除本地存储的token
+        //     localStorage.removeItem(TOKEN_KEY);
+        //
+        //     // 2. 可选：向后端发送退出请求
+        //     fetch(`${API_BASE}/logout`, {
+        //         method: "POST",
+        //         credentials: 'include'
+        //     })
+        //     .then(response => {
+        //         console.log("后端退出请求完成");
+        //         return response.json();
+        //     })
+        //     .catch(err => {
+        //         console.log("后端登出接口调用失败，不影响前端登出:", err);
+        //     })
+        //     .finally(() => {
+        //         // 3. 清理页面状态
+        //         clearPageState();
+        //
+        //         // 4. 隐藏退出按钮
+        //         hideLogoutButton();
+        //
+        //         // 5. 切换页面显示
+        //         document.getElementById("loginPage").classList.remove("hidden");
+        //         document.getElementById("mainContent").classList.add("main-content");
+        //
+        //         // 6. 清空表单
+        //         document.getElementById("username").value = "";
+        //         document.getElementById("password").value = "";
+        //         document.getElementById("captcha").value = "";
+        //
+        //         // 7. 刷新验证码
+        //         refreshCaptcha();
+        //
+        //         // 8. 显示退出成功消息
+        //         setTimeout(() => {
+        //             alert("已成功退出登录");
+        //         }, 300);
+        //
+        //         console.log("退出登录完成");
+        //     });
+        // }
 
         /**
          * 清理页面状态
