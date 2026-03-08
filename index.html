@@ -738,9 +738,14 @@
 
         /* 响应式设计 - 移动端适配 */
         @media (max-width: 768px) {
-            /* 移动端音乐播放器卡片宽度 */
+            /* 移动端音乐播放器卡片：定位到屏幕左下方，不遮挡祝福卡片 */
             .music-player-card {
                 width: 200px;
+                position: fixed;
+                bottom: 20px;   /* 距离底部20px */
+                left: 20px;     /* 距离左侧20px */
+                top: auto;      /* 清除桌面端的top定位 */
+                z-index: 100;   /* 确保在卡片下方，不遮挡核心内容 */
             }
 
             /* 移动端相册网格布局 */
